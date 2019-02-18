@@ -31,7 +31,6 @@ func main() {
 		}
 
 		count := 0
-
 		ticker := time.NewTicker(1 * time.Second)
 		go func() {
 			for {

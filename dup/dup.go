@@ -35,14 +35,15 @@ func NewDup() *Dup {
 func (d *Dup) Check(id string) bool {
 	_, ok := d.value["s"].(map[string]interface{})[id]
 	if ok {
-		return d.Track(id)
+		d.Track(id)
+		return true
 	}
 
 	return false
 }
 
 // Track ...
-func (d *Dup) Track(id string) bool {
+func (d *Dup) Track(id string) string {
 	d.value["s"].(map[string]interface{})[id] = time.Now()
 
 	_, ok := d.value["to"]
@@ -61,7 +62,7 @@ func (d *Dup) Track(id string) bool {
 		})
 	}
 
-	return true
+	return id
 }
 
 // Random ...
