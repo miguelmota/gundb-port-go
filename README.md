@@ -1,6 +1,6 @@
-# go-gun
+# gun golang port
 
-> Go implemention of GunDB
+> [GunDB](https://github.com/amark/gun) port examples in [Go](https://golang.org/)
 
 ## Resources
 
