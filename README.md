@@ -7,7 +7,8 @@ NOTE: These initial implementations have not yet been fully tested for accuracy 
 
 ## Resources
 
-- [GunDB Port](https://github.com/gundb/port)
+- [GunDB Port JS example](https://github.com/gundb/port)
+- [Porting GUN documentation](https://gun.eco/docs/Porting-GUN)
 
 ## License
 
