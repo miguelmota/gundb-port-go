@@ -7,8 +7,8 @@ import (
 	"net/http"
 
 	"github.com/gorilla/websocket"
-	"github.com/miguelmota/go-gun/dup"
-	"github.com/miguelmota/go-gun/ham"
+	"github.com/miguelmota/gundb-port-go/dup"
+	"github.com/miguelmota/gundb-port-go/ham"
 )
 
 var upgrader = websocket.Upgrader{

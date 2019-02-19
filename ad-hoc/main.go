@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/gorilla/websocket"
-	"github.com/miguelmota/go-gun/dup"
+	"github.com/miguelmota/gundb-port-go/dup"
 )
 
 var upgrader = websocket.Upgrader{
