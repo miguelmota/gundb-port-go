@@ -10,7 +10,11 @@ NOTE: These initial implementations have not yet been fully tested for accuracy 
 - Run individual example:
 
     ```bash
-    go run graph/main.go
+    # go run com/main.go
+    # go run ad-hoc/main.go
+    # go run graph/main.go
+    # go run resolution/main.go
+    go run key/main.go
     ```
 
 - Start static server:
@@ -19,7 +23,7 @@ NOTE: These initial implementations have not yet been fully tested for accuracy 
     go run html/main.go
     ```
 
-- navigate to [http://localhost:3000](http://localhost:3000) and click on demo html page
+- Navigate to [http://localhost:3000](http://localhost:3000) and click on demo html page
 
 
 ## Resources
