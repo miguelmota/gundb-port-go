@@ -22,6 +22,8 @@ peer.onopen = function(o){
     }
     peer.send(JSON.stringify(msg));
   },1000 * Math.random());
+  // simulate concurrency and conflict resolution.
+  // this species should be chosen because it has a larger lexical count (it's a longer string) even though they both have a vector of 2.
   setTimeout(function(){
     var msg = {
       '#': dup.track(Dup.random()),

@@ -75,9 +75,9 @@ func main() {
 			id := js["#"].(string)
 
 			// comment out this line to test
-			//if d.Check(id) {
-			//	continue
-			//}
+			if d.Check(id) {
+				continue
+			}
 
 			d.Track(id)
 			fmt.Printf("received: %s\n", js)
@@ -85,7 +85,7 @@ func main() {
 		}
 	})
 
-	http.ListenAndServe(":8080", nil)
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
 /* // BROWSER!

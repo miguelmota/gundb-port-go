@@ -58,15 +58,19 @@ func main() {
 			}
 
 			d.Track(id)
-			fmt.Printf("received: %s\n", js)
-			fmt.Printf("from: %s\n", peer.RemoteAddr())
+			//fmt.Printf("received: %s\n", msg)
+			//fmt.Printf("from: %s\n", peer.RemoteAddr())
 
 			putValue, ok := js["put"]
 
 			if ok {
 				ham.Mix(putValue.(map[string]interface{}), graph)
 				fmt.Println("----------------")
-				fmt.Println(graph)
+				graphJs, err := json.Marshal(graph)
+				if err != nil {
+					log.Fatal(err)
+				}
+				fmt.Println(string(graphJs))
 			}
 
 			for _, peer := range peers {
@@ -77,7 +81,7 @@ func main() {
 		}
 	})
 
-	http.ListenAndServe(":8080", nil)
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
 // BROWSER! Use html/index.html

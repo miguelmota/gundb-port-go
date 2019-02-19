@@ -55,7 +55,7 @@ func NewHam(
 }
 
 // Mix ...
-func Mix(change, graph map[string]interface{}) interface{} {
+func Mix(change map[string]interface{}, graph map[string]interface{}) map[string]interface{} {
 	machine := time.Now()
 	var diff map[string]interface{}
 
@@ -73,13 +73,14 @@ func Mix(change, graph map[string]interface{}) interface{} {
 			// equiv: was = (graph[soul]||{_:{'>':{}}})._['>'][key] || -Infinity
 			var was interface{}
 			soulv, ok := graph[soul]
+
 			if ok {
 				was = soulv.(map[string]interface{})["_"].(map[string]interface{})[">"].(map[string]interface{})[key]
 			}
 
 			if was == nil {
-				// infinity
-				was = math.MinInt64
+				// 'infinity'
+				was = float64(math.MinInt64)
 			}
 
 			// equiv: known = (graph[soul]||{})[key]
@@ -89,7 +90,14 @@ func Mix(change, graph map[string]interface{}) interface{} {
 				known = graphsoul.(map[string]interface{})[key]
 			}
 
-			hm, err := NewHam(float64(machine.Unix()), state.(float64), float64(was.(int)), val, known)
+			hm, err := NewHam(
+				float64(machine.Unix()),
+				state.(float64),
+				was.(float64),
+				val,
+				known,
+			)
+
 			if err != nil {
 				log.Fatal(err)
 			}
@@ -127,8 +135,8 @@ func Mix(change, graph map[string]interface{}) interface{} {
 			graph[soul].(map[string]interface{})[key] = val
 			diff[soul].(map[string]interface{})[key] = val
 
-			graph[soul].(map[string]interface{})[key] = state
 			diff[soul].(map[string]interface{})["_"].(map[string]interface{})[">"].(map[string]interface{})[key] = state
+			graph[soul].(map[string]interface{})["_"].(map[string]interface{})[">"].(map[string]interface{})[key] = state
 		}
 	}
 
